@@ -1,0 +1,362 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ANIMATIONS.CSS — Civil Engineering Enhanced Animations
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── ENGINEERING CANVAS BACKGROUND ── */
+#engineering-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* ── BLUEPRINT SVG ANIMATIONS ── */
+.bp-rotate-slow {
+  transform-origin: 520px 160px;
+  animation: bpRotate 32s linear infinite;
+}
+.bp-rotate-rev {
+  transform-origin: 520px 160px;
+  animation: bpRotate 20s linear infinite reverse;
+}
+@keyframes bpRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.bp-draw {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: bpDraw 3s ease-out 1s forwards;
+}
+@keyframes bpDraw { to { stroke-dashoffset: 0; } }
+
+/* ── LOADER BLUEPRINT SPIN ── */
+.loader-blueprint {
+  width: 90px; height: 90px;
+  margin: 0 auto 1.5rem;
+}
+.loader-blueprint svg { width: 100%; height: 100%; }
+.loader-spin { animation: loaderSpin 2s linear infinite; transform-origin: 100px 100px; }
+.loader-spin-rev { animation: loaderSpin 1.5s linear infinite reverse; transform-origin: 100px 100px; }
+@keyframes loaderSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ── ORBIT ICONS AROUND PROFILE ── */
+.orbit-icon {
+  position: absolute;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  color: var(--accent-3);
+  box-shadow: var(--shadow-gold);
+  z-index: 10;
+  animation: orbitFloat 6s ease-in-out infinite;
+}
+.orbit-1 {
+  top: 5%; left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+  color: var(--accent-3);
+}
+.orbit-2 {
+  top: 50%; right: -5%;
+  transform: translateY(-50%);
+  animation-delay: 1.5s;
+  color: var(--steel-4);
+}
+.orbit-3 {
+  bottom: 5%; left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 3s;
+  color: var(--accent-2);
+}
+.orbit-4 {
+  top: 50%; left: -5%;
+  transform: translateY(-50%);
+  animation-delay: 4.5s;
+  color: var(--steel-3);
+}
+@keyframes orbitFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-10px); }
+}
+.orbit-2, .orbit-4 {
+  animation-name: orbitFloatY;
+}
+@keyframes orbitFloatY {
+  0%, 100% { transform: translateY(-50%) translateX(0px); }
+  50%       { transform: translateY(-50%) translateX(-8px); }
+}
+
+/* ── ENGINEERING TICKER ── */
+.eng-ticker {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--bg-secondary), var(--bg-card), var(--bg-secondary));
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.7rem 0;
+  position: relative;
+  z-index: 2;
+}
+.eng-ticker::before,
+.eng-ticker::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 3;
+  pointer-events: none;
+}
+.eng-ticker::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg-primary), transparent);
+}
+.eng-ticker::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg-primary), transparent);
+}
+.eng-ticker-track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: tickerScroll 40s linear infinite;
+  width: max-content;
+}
+.eng-ticker-track span {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  padding: 0 1.2rem;
+  transition: color 0.3s;
+}
+.eng-ticker-track span:hover { color: var(--accent-3); }
+.ticker-sep { color: var(--accent-2) !important; padding: 0 !important; opacity: 0.6; }
+@keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── BLOG PREVIEW SECTION ── */
+.blog-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+@media (max-width: 900px) { .blog-preview-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) and (min-width: 901px) { .blog-preview-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.blog-preview-card {
+  padding: 2rem;
+  border-radius: var(--r-lg);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.blog-preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--steel-3), var(--accent-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+.blog-preview-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg), var(--shadow-gold); }
+.blog-preview-card:hover::before { transform: scaleX(1); }
+.blog-preview-card.featured {
+  border-color: var(--accent-2);
+  background: linear-gradient(135deg, var(--bg-card) 60%, rgba(232,164,32,0.06));
+}
+.blog-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel-4);
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-full);
+  padding: 0.3rem 0.8rem;
+  width: fit-content;
+}
+.blog-preview-badge.featured { color: var(--accent-3); background: var(--accent-subtle); border-color: var(--accent-2); }
+.blog-preview-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin: 0;
+  flex: 1;
+}
+.blog-preview-excerpt {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+.blog-preview-meta {
+  display: flex;
+  gap: 1.2rem;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+.blog-preview-meta span { display: flex; align-items: center; gap: 0.4rem; }
+.blog-preview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--accent-3);
+  text-decoration: none;
+  margin-top: auto;
+  transition: gap 0.3s ease, color 0.3s;
+}
+.blog-preview-link:hover { gap: 0.9rem; color: var(--accent-2); }
+.blog-preview-link i { font-size: 0.75rem; transition: transform 0.3s ease; }
+.blog-preview-link:hover i { transform: translateX(4px); }
+
+.blog-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.blog-cta-note {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+/* ── CONSTRUCTION LINE SECTION DIVIDER ── */
+.divider {
+  position: relative;
+  height: 1px;
+  background: var(--border-subtle);
+  overflow: visible;
+}
+.divider::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 0 3px var(--bg-primary), 0 0 0 5px var(--accent-2);
+  opacity: 0.6;
+}
+
+/* ── COUNTER ANIMATION ── */
+.count-animated {
+  display: inline-block;
+  animation: countPop 0.4s var(--ease-spring);
+}
+@keyframes countPop {
+  0%   { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* ── CARD HOVER GLOW ── */
+.card {
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-default);
+}
+
+/* ── HERO FLOATING ANIMATION ── */
+.profile-ring-container { animation: heroFloat 6s ease-in-out infinite; }
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ── PULSE GLOW ON BADGE ── */
+.badge-pulse {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: badgePulse 2s ease-in-out infinite;
+  margin-right: 0.3rem;
+}
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46,204,113,0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(46,204,113,0); }
+}
+
+/* ── NAV LOGO MARK ROTATION ON HOVER ── */
+.nav-logo-mark { transition: transform 0.4s var(--ease-spring), background 0.3s; }
+.nav-logo:hover .nav-logo-mark { transform: rotate(15deg) scale(1.1); }
+
+/* ── SKILL CARD HOVER ── */
+.skill-card { transition: transform 0.3s var(--ease-spring), box-shadow 0.3s, border-color 0.3s; }
+.skill-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--accent-2);
+  box-shadow: var(--shadow-gold);
+}
+
+/* ── TIMELINE DOT PULSE ── */
+.timeline-dot {
+  animation: timelineDotGlow 3s ease-in-out infinite;
+}
+@keyframes timelineDotGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,164,32,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(232,164,32,0); }
+}
+
+/* ── FORM INPUT FOCUS ── */
+.form-input:focus {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+/* ── BACK TO TOP PULSE ── */
+#back-to-top:hover {
+  animation: btPulse 0.6s var(--ease-spring);
+}
+@keyframes btPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.2) translateY(-4px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* ── CANVAS FADE-IN ── */
+#engineering-canvas {
+  animation: canvasFade 2s ease forwards;
+}
+@keyframes canvasFade { from { opacity: 0; } to { opacity: 0.35; } }
+
+/* ── NOISE OVERLAY GRAIN ── */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── PAGE TRANSITION ── */
+body { animation: pageFadeIn 0.5s ease; }
+@keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .orbit-icon { width: 34px; height: 34px; font-size: 0.8rem; }
+  .blog-preview-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .blog-cta-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .eng-ticker-track span { padding: 0 0.8rem; }
+}

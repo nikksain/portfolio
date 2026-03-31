@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════
+   TOKENS.CSS — Design Variables
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* ── DARK THEME (default) ── */
+  --bg-primary:    #060D18;
+  --bg-secondary:  #09152B;
+  --bg-card:       #0D1C34;
+  --bg-card-hover: #122240;
+  --bg-glass:      rgba(13, 28, 52, 0.75);
+
+  --surface-1: rgba(255,255,255,0.04);
+  --surface-2: rgba(255,255,255,0.07);
+  --surface-3: rgba(255,255,255,0.11);
+
+  --border-subtle:  rgba(255,255,255,0.07);
+  --border-default: rgba(255,255,255,0.12);
+  --border-strong:  rgba(255,255,255,0.22);
+
+  /* Gold accent — premium engineering steel */
+  --accent-1:      #C4820A;
+  --accent-2:      #E8A420;
+  --accent-3:      #F5BE45;
+  --accent-4:      #FDD87A;
+  --accent-glow:   rgba(232,164,32,0.22);
+  --accent-subtle: rgba(232,164,32,0.09);
+
+  /* Steel blue — structural / technical */
+  --steel-1: #1A4272;
+  --steel-2: #2A62A8;
+  --steel-3: #4D8FCC;
+  --steel-4: #7AB3E0;
+
+  /* Concrete warm — civil construction */
+  --concrete-1: rgba(180,160,120,0.08);
+  --concrete-2: rgba(180,160,120,0.14);
+
+  /* Text */
+  --text-primary:   rgba(255,255,255,0.94);
+  --text-secondary: rgba(255,255,255,0.62);
+  --text-tertiary:  rgba(255,255,255,0.38);
+  --text-disabled:  rgba(255,255,255,0.20);
+
+  /* Status */
+  --success: #2ECC71;
+  --warning: #F39C12;
+  --error:   #E74C3C;
+  --info:    #3498DB;
+
+  /* ── TYPOGRAPHY ── */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Outfit', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  --text-xs:   clamp(0.65rem, 1.2vw, 0.72rem);
+  --text-sm:   clamp(0.78rem, 1.4vw, 0.875rem);
+  --text-base: clamp(0.9rem,  1.6vw, 1rem);
+  --text-md:   clamp(1rem,    1.8vw, 1.1rem);
+  --text-lg:   clamp(1.15rem, 2vw,   1.3rem);
+  --text-xl:   clamp(1.4rem,  2.5vw, 1.6rem);
+  --text-2xl:  clamp(1.8rem,  3.5vw, 2.2rem);
+  --text-3xl:  clamp(2.2rem,  5vw,   3rem);
+  --text-4xl:  clamp(2.8rem,  6.5vw, 4.2rem);
+  --text-hero: clamp(3.5rem,  9vw,   6.5rem);
+
+  /* ── SPACING ── */
+  --space-1:  0.25rem;  --space-2:  0.5rem;
+  --space-3:  0.75rem;  --space-4:  1rem;
+  --space-5:  1.25rem;  --space-6:  1.5rem;
+  --space-8:  2rem;     --space-10: 2.5rem;
+  --space-12: 3rem;     --space-16: 4rem;
+  --space-20: 5rem;     --space-24: 6rem;
+
+  --section-gap: clamp(5rem, 10vw, 9rem);
+  --nav-height:  72px;
+  --max-width:   1320px;
+  --px:          clamp(1.25rem, 5vw, 2.5rem);
+
+  /* ── RADIUS ── */
+  --r-sm:   6px;  --r-md:   12px; --r-lg:   18px;
+  --r-xl:   28px; --r-2xl:  40px; --r-full: 9999px;
+
+  /* ── SHADOWS ── */
+  --shadow-sm:   0 1px 8px rgba(0,0,0,0.38);
+  --shadow-md:   0 4px 24px rgba(0,0,0,0.48);
+  --shadow-lg:   0 12px 52px rgba(0,0,0,0.58);
+  --shadow-xl:   0 24px 80px rgba(0,0,0,0.68);
+  --shadow-gold: 0 6px 32px rgba(232,164,32,0.28);
+  --shadow-card: 0 0 0 1px var(--border-subtle), 0 4px 24px rgba(0,0,0,0.42);
+  --shadow-blue: 0 6px 32px rgba(77,143,204,0.18);
+
+  /* ── ANIMATION ── */
+  --ease-out:    cubic-bezier(0.16,1,0.3,1);
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --ease-smooth: cubic-bezier(0.25,0.46,0.45,0.94);
+  --ease-in-out: cubic-bezier(0.65,0,0.35,1);
+
+  --dur-fast:   120ms;
+  --dur-base:   240ms;
+  --dur-slow:   400ms;
+  --dur-slower: 700ms;
+
+  /* ── Z-INDEX ── */
+  --z-base:    1;   --z-raised:  10;
+  --z-overlay: 100; --z-modal:   200;
+  --z-toast:   300; --z-cursor:  9999;
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg-primary:    #F5F2EB;
+  --bg-secondary:  #EDE8DF;
+  --bg-card:       #FFFFFF;
+  --bg-card-hover: #F9F7F2;
+  --bg-glass:      rgba(255,255,255,0.75);
+
+  --surface-1: rgba(0,0,0,0.03);
+  --surface-2: rgba(0,0,0,0.06);
+  --surface-3: rgba(0,0,0,0.10);
+
+  --border-subtle:  rgba(0,0,0,0.07);
+  --border-default: rgba(0,0,0,0.12);
+  --border-strong:  rgba(0,0,0,0.22);
+
+  --text-primary:   rgba(10,16,26,0.94);
+  --text-secondary: rgba(10,16,26,0.62);
+  --text-tertiary:  rgba(10,16,26,0.40);
+  --text-disabled:  rgba(10,16,26,0.22);
+
+  --shadow-sm:   0 1px 8px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 24px rgba(0,0,0,0.10);
+  --shadow-lg:   0 12px 52px rgba(0,0,0,0.12);
+  --shadow-xl:   0 24px 80px rgba(0,0,0,0.15);
+  --shadow-card: 0 0 0 1px var(--border-subtle), 0 4px 24px rgba(0,0,0,0.08);
+}

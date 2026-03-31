@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Civil Engineering Blog — Nikhil Sain | Field Notes, Construction & Surveying</title>
+  <meta name="description" content="Real-world civil engineering insights by Nikhil Sain — DCRUST 2026. Field notes from RCC construction, MICADA internship, surveying camps, STP visits, and highway engineering.">
+  <meta name="keywords" content="civil engineering blog, RCC construction, surveying, MICADA internship, STP, highway engineering, DCRUST, Nikhil Sain">
+  <meta name="author" content="Nikhil Sain">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://nikhilsain.me/blog.html">
+  <meta name="theme-color" content="#060D18">
+  <meta property="og:type" content="blog">
+  <meta property="og:url" content="https://nikhilsain.me/blog.html">
+  <meta property="og:title" content="Civil Engineering Blog — Nikhil Sain">
+  <meta property="og:description" content="Field notes, construction guides & site reports from a DCRUST civil engineering student.">
+  <meta property="og:image" content="https://nikhilsain.me/nikhil.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Civil Engineering Blog — Nikhil Sain">
+  <meta name="twitter:image" content="https://nikhilsain.me/nikhil.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Nikhil Sain Civil Engineering Blog","url":"https://nikhilsain.me/blog.html","author":{"@type":"Person","name":"Nikhil Sain","url":"https://nikhilsain.me","jobTitle":"Civil Engineer","alumniOf":"DCRUST Murthal"}}</script>
+  <link rel="icon" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+
+<!-- AMBIENT NOISE TEXTURE -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-prog" aria-hidden="true"></div>
+
+<!-- CURSOR -->
+<div id="cur-ring" aria-hidden="true"></div>
+<div id="cur-dot"  aria-hidden="true"></div>
+
+<!-- BACK TO TOP -->
+<button id="btt" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite">
+  <i class="fas fa-check-circle"></i> <span id="toast-txt">Copied!</span>
+</div>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<header id="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">NS</div>
+      <div class="brand-info">
+        <span class="brand-name">Nikhil Sain</span>
+        <span class="brand-tag">Civil Engineer</span>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html"            class="nl"><i class="fas fa-home"></i>Portfolio</a>
+      <a href="index.html#projects"   class="nl">Projects</a>
+      <a href="index.html#experience" class="nl">Experience</a>
+      <a href="blog.html"             class="nl active">Blog</a>
+      <a href="index.html#contact"    class="nl">Contact</a>
+    </nav>
+
+    <div class="nav-end">
+      <button id="search-open-btn" class="icon-btn" aria-label="Search (Ctrl+K)" title="Search (Ctrl+K)">
+        <i class="fas fa-search"></i>
+        <span class="kbd-hint">⌘K</span>
+      </button>
+      <button id="theme-btn" class="icon-btn" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="theme-ico"></i>
+      </button>
+      <a href="mailto:civil.nikhilsain@gmail.com" class="hire-btn">
+        <i class="fas fa-paper-plane"></i> Hire Me
+      </a>
+      <button id="ham" class="ham" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mob-nav" id="mob-nav">
+    <a href="index.html"            class="ml"><i class="fas fa-home"></i>Portfolio</a>
+    <a href="index.html#projects"   class="ml">Projects</a>
+    <a href="index.html#experience" class="ml">Experience</a>
+    <a href="blog.html"             class="ml active">Blog</a>
+    <a href="index.html#contact"    class="ml">Contact</a>
+    <a href="mailto:civil.nikhilsain@gmail.com" class="ml cta">Hire Me</a>
+  </div>
+</header>
+
+<!-- ═══════════════════ SEARCH OVERLAY ═══════════════════ -->
+<div id="search-ov" class="search-ov" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="so-inner">
+    <div class="so-bar">
+      <i class="fas fa-search so-ico"></i>
+      <input id="search-inp" type="text" placeholder="Search articles, topics, tags…" autocomplete="off">
+      <kbd class="esc-badge">ESC</kbd>
+    </div>
+    <div class="so-results" id="so-results"></div>
+    <div class="so-footer">
+      <span>Try: </span>
+      <button onclick="quickSearch('RCC')">RCC Construction</button>
+      <button onclick="quickSearch('survey')">Surveying</button>
+      <button onclick="quickSearch('MICADA')">MICADA</button>
+      <button onclick="quickSearch('STP')">Water Infra</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="hero-cv" aria-hidden="true"></canvas>
+  <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+  <div class="hero-body">
+    <div class="hero-chip" data-reveal>
+      <span class="chip-dot"></span>
+      Civil Engineering Field Notes
+    </div>
+
+    <h1 class="hero-h1" data-reveal data-delay="80">
+      Engineering<br>
+      <em>Insights</em> from<br>
+      the <span class="h1-line">Field</span>
+    </h1>
+
+    <p class="hero-sub" data-reveal data-delay="160">
+      Real-world construction learnings, site visit reports, and civil engineering
+      knowledge from a DCRUST final-year student with hands-on government project experience.
+    </p>
+
+    <div class="hero-author" data-reveal data-delay="240">
+      <img src="nikhil.png" alt="Nikhil Sain" class="ha-av" onerror="this.style.display='none'">
+      <div class="ha-info">
+        <strong>Nikhil Sain</strong>
+        <span>B.Tech Civil Engineering · DCRUST Murthal 2026</span>
+      </div>
+    </div>
+
+    <div class="hero-stats" data-reveal data-delay="300">
+      <div class="hs-item"><span class="hs-n" id="hero-count">3</span><span class="hs-l">Articles</span></div>
+      <div class="hs-div"></div>
+      <div class="hs-item"><span class="hs-n">5+</span><span class="hs-l">Topics</span></div>
+      <div class="hs-div"></div>
+      <div class="hs-item"><span class="hs-n">2024</span><span class="hs-l">Since</span></div>
+    </div>
+  </div>
+
+  <!-- Marquee ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>RCC Construction</span><span class="sep">◆</span>
+      <span>Advanced Surveying</span><span class="sep">◆</span>
+      <span>Highway Engineering</span><span class="sep">◆</span>
+      <span>Sewage Treatment</span><span class="sep">◆</span>
+      <span>MICADA Internship</span><span class="sep">◆</span>
+      <span>Total Station</span><span class="sep">◆</span>
+      <span>Water Infrastructure</span><span class="sep">◆</span>
+      <span>AutoCAD Civil 3D</span><span class="sep">◆</span>
+      <span>RCC Construction</span><span class="sep">◆</span>
+      <span>Advanced Surveying</span><span class="sep">◆</span>
+      <span>Highway Engineering</span><span class="sep">◆</span>
+      <span>Sewage Treatment</span><span class="sep">◆</span>
+      <span>MICADA Internship</span><span class="sep">◆</span>
+      <span>Total Station</span><span class="sep">◆</span>
+      <span>Water Infrastructure</span><span class="sep">◆</span>
+      <span>AutoCAD Civil 3D</span><span class="sep">◆</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <div class="sc-mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════ FILTER BAR ═══════════════════ -->
+<div class="filter-bar" id="filter-bar">
+  <div class="fb-wrap">
+    <div class="fb-cats" id="fb-cats" role="tablist"></div>
+    <div class="fb-right">
+      <span class="fb-count" id="fb-count"></span>
+      <div class="view-btns">
+        <button class="vb active" id="vb-grid" data-v="grid" title="Grid view"><i class="fas fa-th-large"></i></button>
+        <button class="vb"        id="vb-list" data-v="list" title="List view"><i class="fas fa-list"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FEATURED ═══════════════════ -->
+<section class="sec" id="featured-sec">
+  <div class="inner">
+    <div class="sec-label" data-reveal><span></span>Featured Article</div>
+    <div id="featured-card" data-reveal data-delay="80"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ GRID ═══════════════════ -->
+<section class="sec" id="grid-sec">
+  <div class="inner">
+    <div class="sec-label" data-reveal><span></span><span id="grid-lbl">Latest Articles</span></div>
+    <div id="grid" class="grid" role="feed" aria-label="Blog articles"></div>
+    <div id="no-results" class="no-results" style="display:none">
+      <i class="fas fa-search"></i>
+      <h3>No articles found</h3>
+      <p>Try a different category or <button onclick="resetAll()">view all</button></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ NEWSLETTER ═══════════════════ -->
+<section class="sec nl-sec" data-reveal>
+  <div class="inner">
+    <div class="nl-card">
+      <div class="nl-deco" aria-hidden="true">
+        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="85" fill="none" stroke="var(--gold)" stroke-width=".8" stroke-dasharray="6 5" opacity=".2" style="animation:spin 30s linear infinite;transform-origin:100px 100px"/><circle cx="100" cy="100" r="50" fill="none" stroke="var(--steel)" stroke-width=".6" stroke-dasharray="4 4" opacity=".18" style="animation:spin 20s linear infinite reverse;transform-origin:100px 100px"/><circle cx="100" cy="100" r="8" fill="var(--gold)" opacity=".5"/></svg>
+      </div>
+      <div class="nl-body">
+        <span class="nl-eyebrow">Stay Connected</span>
+        <h2 class="nl-h2">Get More Civil Engineering Insights</h2>
+        <p>Follow along on LinkedIn for new articles, project updates, and real-world engineering learnings from every site visit.</p>
+        <div class="nl-btns">
+          <a href="https://linkedin.com/in/nikhilsaincivil" target="_blank" rel="noopener" class="btn-gold"><i class="fab fa-linkedin"></i>Follow on LinkedIn</a>
+          <a href="index.html#contact" class="btn-outline"><i class="fas fa-envelope"></i>Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TOPICS ═══════════════════ -->
+<section class="sec" data-reveal>
+  <div class="inner">
+    <div class="sec-label" data-reveal><span></span>Explore Topics</div>
+    <div id="topics" class="topics-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="inner">
+    <div class="ft-grid">
+      <div class="ft-col brand-col">
+        <div class="ft-logo">Nikhil <em>Sain</em></div>
+        <p>Civil Engineering student at DCRUST Murthal (2026). Writing about construction, surveying, and engineering from real project experience.</p>
+        <div class="ft-socials">
+          <a href="https://linkedin.com/in/nikhilsaincivil" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://instagram.com/nikhilsain.me"     target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com/nikhilsainme"         target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.youtube.com/@Nkhilsainvlog"   target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Explore</h4>
+        <a href="index.html">Portfolio</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#achievements">Achievements</a>
+      </div>
+      <div class="ft-col">
+        <h4>Topics</h4>
+        <a href="#" onclick="filterCat('construction');return false">Construction</a>
+        <a href="#" onclick="filterCat('surveying');return false">Surveying</a>
+        <a href="#" onclick="filterCat('water');return false">Water Infra</a>
+        <a href="#" onclick="filterCat('highway');return false">Highway</a>
+        <a href="#" onclick="filterCat('career');return false">Career Tips</a>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <a href="mailto:civil.nikhilsain@gmail.com">civil.nikhilsain@gmail.com</a>
+        <a href="https://drive.google.com/drive/folders/1vfSmDDP2cnuY8QxZAUAjO5apm7E2nHDV" target="_blank" rel="noopener">Download CV</a>
+        <a href="index.html#contact">Send Message</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2025 Nikhil Sain — All Rights Reserved</p>
+      <p>Civil Engineer · DCRUST Murthal 2026</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════ READER MODAL ═══════════════════ -->
+<div id="reader" class="reader" role="dialog" aria-modal="true">
+  <div class="rd-bd" id="rd-bd"></div>
+  <div class="rd-panel" id="rd-panel">
+
+    <!-- Toolbar -->
+    <div class="rd-toolbar">
+      <button class="rd-back" id="rd-back"><i class="fas fa-arrow-left"></i>Back to Blog</button>
+      <div class="rd-tools">
+        <span class="rd-pct" id="rd-pct">0%</span>
+
+        <div class="font-ctrl">
+          <button onclick="adjustFont(-1)" title="Smaller text"><i class="fas fa-minus"></i></button>
+          <span id="font-lbl">16px</span>
+          <button onclick="adjustFont(1)"  title="Larger text"><i class="fas fa-plus"></i></button>
+        </div>
+
+        <div class="share-row">
+          <button class="sh-btn tw"  onclick="shareOn('twitter')"  title="Share on Twitter"><i class="fab fa-twitter"></i></button>
+          <button class="sh-btn li"  onclick="shareOn('linkedin')" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+          <button class="sh-btn cp"  onclick="copyLink()"          title="Copy link"><i class="fas fa-link"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="rd-prog"><div id="rd-bar"></div></div>
+
+    <!-- Scrollable content -->
+    <div class="rd-scroll" id="rd-scroll">
+      <article class="rd-article" id="rd-article"></article>
+      <aside class="rd-related" id="rd-related"></aside>
+      <div class="rd-author-card">
+        <img src="nikhil.png" alt="Nikhil Sain" onerror="this.style.display='none'">
+        <div>
+          <strong>Nikhil Sain</strong>
+          <span>B.Tech Civil Engineering · DCRUST Murthal 2026</span>
+          <p>Final-year civil engineering student with 6-month government internship at MICADA, Haryana. Passionate about highway engineering, structural design, and practical construction.</p>
+          <div class="ra-links">
+            <a href="https://linkedin.com/in/nikhilsaincivil" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i>LinkedIn</a>
+            <a href="index.html"><i class="fas fa-globe"></i>Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="blog-post-list" data-slugs='["rcc-construction-guide","surveying-field-camp","stp-visit-mahendragarh"]' style="display:none"></div>
+<script src="blog.js"></script>
+</body>
+</html>
